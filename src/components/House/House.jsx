@@ -1,24 +1,41 @@
 import React from "react";
-
+import "./House.scss";
 const House = props => {
-	const { address, city, name, state, id, zip, mortgage, rent } = props.details;
+	const {
+		address,
+		city,
+		name,
+		img,
+		state,
+		id,
+		zip,
+		mortgage,
+		rent
+	} = props.details;
 	return (
-		<section>
-			<h3>{name}</h3>
-			<h3>{address}</h3>
-			<h3>{city}</h3>
-			<h3>{state}</h3>
-			<h3>{zip}</h3>
-			<h3>{mortgage}</h3>
-			<h3>{rent}</h3>
+		<section className='house-section'>
+			<section className='img-container'>
+				<img src={img} alt='house' />
+			</section>
 
-			<button
+			<section>
+				<h3>{`Property Name: ${name}`}</h3>
+				<h3>{`Address: ${address}`}</h3>
+				<h3>{`City: ${city}`}</h3>
+				<h3>{`State: ${state}`}</h3>
+				<h3>{`Zip: ${zip}`}</h3>
+			</section>
+			<section>
+				<h3>{`Mortgage: ${mortgage}`}</h3>
+				<h3>{`Rent: ${rent}`}</h3>
+			</section>
+			<i
 				onClick={e => {
 					props.delete(id);
 				}}
-			>
-				Delete
-			</button>
+				className='fas fa-times delete'
+			></i>
+			{/* <button>Delete</button> */}
 		</section>
 	);
 };

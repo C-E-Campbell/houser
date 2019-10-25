@@ -33,7 +33,14 @@ export default class Dashboard extends Component {
 		});
 		return (
 			<div className='main'>
-				<Link to='/wizard/step1'>Add New Property</Link>
+				<div className='dashboard'>
+					<h1>Dashboard</h1>
+					<Link to='/wizard/step1'>Add New Property</Link>
+				</div>
+				<hr />
+				<section className='main-section'>
+					<h2>Home Listings</h2>
+				</section>
 				{mappedHouses}
 			</div>
 		);

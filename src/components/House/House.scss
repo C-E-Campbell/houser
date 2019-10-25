@@ -1,0 +1,36 @@
+.house-section {
+	background-color: #dedede;
+	padding: 1rem;
+	width: 90%;
+	border-radius: 4px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-self: center;
+	text-align: left;
+	position: relative;
+	section {
+		width: 30%;
+	}
+	h3 {
+		margin-bottom: 1rem;
+		font-weight: 700;
+		color: #444;
+	}
+	.delete {
+		position: absolute;
+		right: 2%;
+		top: 5%;
+		transition: transform 0.3s ease;
+		&:hover {
+			cursor: pointer;
+			color: rgb(184, 14, 14);
+			transform: rotate(180deg) scale(1.5);
+		}
+	}
+}
+
+img {
+	align-self: center;
+	width: 100%;
+}

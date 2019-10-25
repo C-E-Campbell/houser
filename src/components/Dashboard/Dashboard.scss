@@ -4,4 +4,43 @@
 	max-width: 960px;
 	margin: 0 auto;
 	height: 100vh;
+	font-family: "Open Sans", sans-serif;
+
+	h1 {
+		font-size: 4rem;
+	}
+	a {
+		background-color: #8aea92;
+		background-color: #8aea92;
+		padding: 0.5rem;
+		border-radius: 4px;
+		color: #333;
+		text-decoration: none;
+		font-weight: 700;
+
+		&:hover {
+			background-color: #77d87f;
+		}
+	}
+
+	.dashboard {
+		display: flex;
+		justify-content: space-between;
+		padding: 2rem 2rem 1rem 2rem;
+		align-items: center;
+	}
+
+	hr {
+		width: 90%;
+		border: 1px solid #333;
+	}
+
+	.main-section {
+		width: 100%;
+		padding: 2rem;
+	}
+
+	h2 {
+		font-weight: 700;
+	}
 }
