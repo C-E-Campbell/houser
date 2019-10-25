@@ -1,16 +1,7 @@
 import React from "react";
 
 const House = props => {
-	const {
-		address,
-		city,
-		mortagage,
-		name,
-		rent,
-		state,
-		id,
-		zip
-	} = props.details;
+	const { address, city, name, state, id, zip } = props.details;
 	return (
 		<section>
 			<h3>{name}</h3>

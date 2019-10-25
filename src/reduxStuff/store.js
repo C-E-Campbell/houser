@@ -7,10 +7,15 @@ const initialState = {
 	zip: 0,
 	city: "",
 	rent: 0,
-	mortgage: 0
+	mortgage: 0,
+	img: ""
 };
 
 export const UPDATE_LOCATION = "UPDATE_LOCATION";
+export const UPDATE_IMG = "UPDATE_IMG";
+export const UPDATE_RENT = "UPDATE_RENT";
+export const UPDATE_REDUX = "UPDATE_REDUX";
+export const CLEAR_REDUX = "CLEAR_REDUX";
 
 const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
@@ -24,6 +29,24 @@ const reducer = (state = initialState, action) => {
 				city: payload.city
 			};
 			return { ...state, location };
+		case UPDATE_IMG:
+			const { img } = payload;
+			return { ...state, img };
+		case UPDATE_RENT:
+			const { mortgage, rent } = payload;
+			return { ...state, mortgage, rent };
+		case CLEAR_REDUX:
+			return {
+				...this.state,
+				name: "",
+				address: "",
+				state: "",
+				zip: 0,
+				city: "",
+				rent: 0,
+				mortgage: 0,
+				img: ""
+			};
 		default:
 			return state;
 	}

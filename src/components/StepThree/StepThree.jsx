@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import store from "../../reduxStuff/store";
+import store, { UPDATE_RENT } from "../../reduxStuff/store";
 import axios from "axios";
 export default class Wizard extends Component {
 	constructor(props) {
@@ -41,6 +41,13 @@ export default class Wizard extends Component {
 		this.props.history.push("/");
 	};
 
+	updateRent = () => {
+		store.dispatch({
+			type: UPDATE_RENT,
+			payload: { ...this.state }
+		});
+	};
+
 	render() {
 		return (
 			<section>
@@ -48,7 +55,9 @@ export default class Wizard extends Component {
 				<input type='number' onChange={this.handleOnChange} id='mortgage' />
 				<label htmlFor='rent'>Rent</label>
 				<input type='number' onChange={this.handleOnChange} id='rent' />
-				<Link to='/wizard/step2'>Previous</Link>
+				<Link onClick={this.updateRent} to='/wizard/step2'>
+					Previous
+				</Link>
 
 				<button onClick={this.handleSubmitNewHouse}>Complete</button>
 			</section>
