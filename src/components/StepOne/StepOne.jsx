@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import store, { UPDATE_LOCATION } from "../../reduxStuff/store";
+import store, {
+	UPDATE_NAME,
+	UPDATE_ADDRESS,
+	UPDATE_CITY,
+	UPDATE_STATE,
+	UPDATE_ZIP
+} from "../../reduxStuff/store";
 export default class Wizard extends Component {
 	constructor(props) {
 		super(props);
@@ -32,8 +38,24 @@ export default class Wizard extends Component {
 
 	updateLocation = () => {
 		store.dispatch({
-			type: UPDATE_LOCATION,
-			payload: { ...this.state }
+			type: UPDATE_NAME,
+			payload: this.state.name
+		});
+		store.dispatch({
+			type: UPDATE_STATE,
+			payload: this.state.state
+		});
+		store.dispatch({
+			type: UPDATE_CITY,
+			payload: this.state.city
+		});
+		store.dispatch({
+			type: UPDATE_ZIP,
+			payload: this.state.zip
+		});
+		store.dispatch({
+			type: UPDATE_ADDRESS,
+			payload: this.state.address
 		});
 	};
 
@@ -41,15 +63,42 @@ export default class Wizard extends Component {
 		return (
 			<section>
 				<label htmlFor='name'>Property Name</label>
-				<input type='text' onChange={this.handleOnChange} id='name' />
+				<input
+					value={this.state.name}
+					type='text'
+					onChange={this.handleOnChange}
+					id='name'
+				/>
 				<label htmlFor='address'>Address</label>
-				<input type='text' onChange={this.handleOnChange} id='address' />
-				<label htmlFor='city'>City</label>
-				<input type='text' onChange={this.handleOnChange} id='city' />
+				<input
+					value={this.state.address}
+					type='text'
+					onChange={this.handleOnChange}
+					id='address'
+				/>
+				<label value={this.state.name} htmlFor='city'>
+					City
+				</label>
+				<input
+					value={this.state.city}
+					type='text'
+					onChange={this.handleOnChange}
+					id='city'
+				/>
 				<label htmlFor='state'>State</label>
-				<input type='text' onChange={this.handleOnChange} id='state' />
+				<input
+					value={this.state.state}
+					type='text'
+					onChange={this.handleOnChange}
+					id='state'
+				/>
 				<label htmlFor='zip'>Zipcode</label>
-				<input type='number' onChange={this.handleOnChange} id='zip' />
+				<input
+					value={this.state.zip}
+					type='number'
+					onChange={this.handleOnChange}
+					id='zip'
+				/>
 
 				<Link onClick={this.updateLocation} to='/wizard/step2'>
 					Next

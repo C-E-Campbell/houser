@@ -1,7 +1,7 @@
 import React from "react";
 
 const House = props => {
-	const { address, city, name, state, id, zip } = props.details;
+	const { address, city, name, state, id, zip, mortgage, rent } = props.details;
 	return (
 		<section>
 			<h3>{name}</h3>
@@ -9,6 +9,8 @@ const House = props => {
 			<h3>{city}</h3>
 			<h3>{state}</h3>
 			<h3>{zip}</h3>
+			<h3>{mortgage}</h3>
+			<h3>{rent}</h3>
 
 			<button
 				onClick={e => {

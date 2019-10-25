@@ -36,7 +36,12 @@ export default class Wizard extends Component {
 		return (
 			<section>
 				<label htmlFor='zip'>Image URL</label>
-				<input type='text' onChange={this.handleOnChange} id='img' />
+				<input
+					value={this.state.img}
+					type='text'
+					onChange={this.handleOnChange}
+					id='img'
+				/>
 				<Link onClick={this.updateImg} to='/wizard/step1'>
 					Previous
 				</Link>

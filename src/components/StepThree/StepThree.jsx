@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import store, { UPDATE_RENT } from "../../reduxStuff/store";
+import store, {
+	UPDATE_RENT,
+	UPDATE_MORTGAGE,
+	CLEAR_REDUX
+} from "../../reduxStuff/store";
 import axios from "axios";
 export default class Wizard extends Component {
 	constructor(props) {
@@ -27,24 +31,32 @@ export default class Wizard extends Component {
 	};
 
 	handleSubmitNewHouse = async () => {
-		const { name, address, city, state, zip } = this.state;
+		const { name, address, city, state, zip, img } = store.getState();
+		const { mortgage, rent } = this.state;
 		await axios.post("/houser/houses", {
-			name: name,
-			address: address,
-			city: city,
-			state: state,
-			zip: Number(zip)
+			name,
+			address,
+			city,
+			state,
+			zip: Number(zip),
+			img,
+			mortgage: Number(mortgage),
+			rent: Number(rent)
 		});
-		// setTimeout(() => {
-		// 	this.props.history.push("/");
-		// }, 1000);
+		store.dispatch({
+			type: CLEAR_REDUX
+		});
 		this.props.history.push("/");
 	};
 
 	updateRent = () => {
 		store.dispatch({
 			type: UPDATE_RENT,
-			payload: { ...this.state }
+			payload: this.state.rent
+		});
+		store.dispatch({
+			type: UPDATE_MORTGAGE,
+			payload: this.state.mortgage
 		});
 	};
 
@@ -52,9 +64,19 @@ export default class Wizard extends Component {
 		return (
 			<section>
 				<label htmlFor='mortgage'>Mortgage</label>
-				<input type='number' onChange={this.handleOnChange} id='mortgage' />
+				<input
+					value={this.state.mortgage}
+					type='number'
+					onChange={this.handleOnChange}
+					id='mortgage'
+				/>
 				<label htmlFor='rent'>Rent</label>
-				<input type='number' onChange={this.handleOnChange} id='rent' />
+				<input
+					value={this.state.rent}
+					type='number'
+					onChange={this.handleOnChange}
+					id='rent'
+				/>
 				<Link onClick={this.updateRent} to='/wizard/step2'>
 					Previous
 				</Link>
