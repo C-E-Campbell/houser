@@ -1,14 +1,14 @@
 import { createStore } from "redux";
 
 const initialState = {
-	name: "",
-	address: "",
-	state: "",
-	zip: "",
-	city: "",
-	rent: "",
-	mortgage: "",
-	img: ""
+	name: "from redux",
+	address: "1",
+	state: "1",
+	zip: "1",
+	city: "1",
+	img: "from redux",
+	rent: "1",
+	mortgage: "1"
 };
 
 export const UPDATE_NAME = "UPDATE_NAME";
@@ -50,7 +50,8 @@ const reducer = (state = initialState, action) => {
 				zip: "",
 				city: "",
 				mortgage: "",
-				rent: ""
+				rent: "",
+				img: ""
 			};
 		default:
 			return state;

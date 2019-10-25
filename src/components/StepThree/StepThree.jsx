@@ -32,7 +32,7 @@ export default class Wizard extends Component {
 
 	handleSubmitNewHouse = async () => {
 		const { name, address, city, state, zip, img } = store.getState();
-		const { mortgage, rent } = this.state;
+
 		await axios.post("/houser/houses", {
 			name,
 			address,
@@ -40,9 +40,10 @@ export default class Wizard extends Component {
 			state,
 			zip: Number(zip),
 			img,
-			mortgage: Number(mortgage),
-			rent: Number(rent)
+			mortgage: this.state.mortgage,
+			rent: this.state.rent
 		});
+
 		store.dispatch({
 			type: CLEAR_REDUX
 		});
