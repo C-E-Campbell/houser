@@ -1,12 +1,18 @@
 import React from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Header from "./components/Header/Header";
+
+import Wizard from "./components/Wizard/Wizard";
 
 function App() {
 	return (
 		<div className='App'>
+			<Header />
 			<Switch>
-				<Route exact path={"/"} />
+				<Route exact path={"/"} component={Dashboard} />
+				<Route path={"/wizard"} component={Wizard} />
 			</Switch>
 		</div>
 	);
