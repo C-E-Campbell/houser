@@ -28,6 +28,8 @@ app.get("/api/test", (req, res) => {
 app.get("/houser/houses", housesCtrl.getHouses);
 
 app.post("/houser/houses", housesCtrl.createHouse);
+
+app.delete("/houser/houses/:id", housesCtrl.deleteHouse);
 //-------------- Run It!
 app.listen(process.env.PORT, () => {
 	console.log(`server running on ${process.env.PORT}`);

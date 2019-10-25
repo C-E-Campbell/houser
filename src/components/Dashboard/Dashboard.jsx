@@ -19,15 +19,21 @@ export default class Dashboard extends Component {
 		});
 	};
 
+	deleteHouse = id => {
+		axios.delete(`/houser/houses/${id}`).then(response => {
+			this.setState({ houses: response.data });
+		});
+	};
+
 	render() {
 		const { houses } = this.state;
 		const mappedHouses = houses.map(house => {
-			return <House key={house.id} details={house} />;
+			return <House key={house.id} details={house} delete={this.deleteHouse} />;
 		});
 		return (
 			<div>
 				{mappedHouses}
-				<Link to='/wizard'>Add New Property</Link>
+				<Link to='/wizard/step1'>Add New Property</Link>
 			</div>
 		);
 	}
