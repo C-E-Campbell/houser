@@ -1,21 +1,40 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import store, { UPDATE_LOCATION } from "../../reduxStuff/store";
 export default class Wizard extends Component {
 	constructor(props) {
 		super(props);
+		const reduxState = store.getState();
 		this.state = {
-			name: "",
-			address: "",
-			city: "",
-			state: "",
-			zip: 0
+			name: reduxState.name,
+			address: reduxState.address,
+			city: reduxState.city,
+			state: reduxState.state,
+			zip: reduxState.zip
 		};
 	}
-
+	componentDidMount() {
+		store.subscribe(() => {
+			const reduxState = store.getState();
+			this.setState({
+				name: reduxState.name,
+				address: reduxState.address,
+				city: reduxState.city,
+				state: reduxState.state,
+				zip: reduxState.zip
+			});
+		});
+	}
 	handleOnChange = event => {
 		let { id, value } = event.target;
 		this.setState({ [id]: value });
+	};
+
+	updateLocation = () => {
+		store.dispatch({
+			type: UPDATE_LOCATION,
+			payload: { ...this.state }
+		});
 	};
 
 	render() {
@@ -32,7 +51,9 @@ export default class Wizard extends Component {
 				<label htmlFor='zip'>Zipcode</label>
 				<input type='number' onChange={this.handleOnChange} id='zip' />
 
-				<Link to='/wizard/step2'>Next</Link>
+				<Link onClick={this.updateLocation} to='/wizard/step2'>
+					Next
+				</Link>
 			</section>
 		);
 	}

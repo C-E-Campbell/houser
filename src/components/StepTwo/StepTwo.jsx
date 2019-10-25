@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import store from "../../reduxStuff/store";
 import axios from "axios";
 export default class Wizard extends Component {
 	constructor(props) {
+		const reduxState = store.getState();
 		super(props);
 		this.state = {
-			img: ""
+			img: reduxState.img
 		};
+	}
+
+	componentDidMount() {
+		store.subscribe(() => {
+			const reduxState = store.getState();
+			this.setState({
+				img: reduxState.img
+			});
+		});
 	}
 
 	handleOnChange = event => {

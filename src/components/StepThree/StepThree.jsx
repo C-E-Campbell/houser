@@ -1,13 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import store from "../../reduxStuff/store";
 import axios from "axios";
 export default class Wizard extends Component {
 	constructor(props) {
+		const reduxStore = store.getState();
 		super(props);
 		this.state = {
-			mortgage: 0,
-			rent: 0
+			mortgage: reduxStore.mortgage,
+			rent: reduxStore.rent
 		};
+	}
+	componentDidMount() {
+		store.subscribe(() => {
+			const reduxState = store.getState();
+			this.setState({
+				mortgage: reduxState.mortgage,
+				rent: reduxState.rent
+			});
+		});
 	}
 
 	handleOnChange = event => {
