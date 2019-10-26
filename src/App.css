@@ -6,4 +6,7 @@
 	color: #333;
 	background-color: #afd4c0;
 	height: 100vh;
+	background: linear-gradient(#afd4c05d, #afd4c049),
+		url(./assets/dawn-desktop-wallpaper-evening-1612351.jpg);
+	background-size: cover;
 }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Dashboard.scss";
 import axios from "axios";
 import House from "../House/House";
+
 export default class Dashboard extends Component {
 	constructor(props) {
 		super(props);
@@ -31,6 +32,7 @@ export default class Dashboard extends Component {
 		const mappedHouses = houses.map(house => {
 			return <House key={house.id} details={house} delete={this.deleteHouse} />;
 		});
+
 		return (
 			<div className='main'>
 				<div className='dashboard'>

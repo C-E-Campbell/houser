@@ -6,8 +6,17 @@ module.exports = {
 	},
 	createHouse: async (req, res) => {
 		const db = req.app.get("db");
-		const { name, address, city, state, zip } = req.body;
-		const result = await db.create_new_house([name, address, city, state, zip]);
+		const { name, address, city, state, zip, img, mortgage, rent } = req.body;
+		const result = await db.create_new_house([
+			name,
+			address,
+			city,
+			state,
+			zip,
+			img,
+			mortgage,
+			rent
+		]);
 		return res.status(200).send("New house inserted");
 	},
 	deleteHouse: async (req, res) => {
