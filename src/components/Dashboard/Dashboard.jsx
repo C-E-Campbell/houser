@@ -42,8 +42,8 @@ export default class Dashboard extends Component {
 				<hr />
 				<section className='main-section'>
 					<h2>Home Listings</h2>
+					{mappedHouses}
 				</section>
-				{mappedHouses}
 			</div>
 		);
 	}
