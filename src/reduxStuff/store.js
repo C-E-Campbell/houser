@@ -1,14 +1,14 @@
 import { createStore } from "redux";
 
 const initialState = {
-	name: "from redux",
-	address: "1",
-	state: "1",
-	zip: "1",
-	city: "1",
-	img: "from redux",
-	rent: "1",
-	mortgage: "1"
+	name: "",
+	address: "",
+	state: "",
+	zip: "",
+	city: "",
+	img: "",
+	rent: "",
+	mortgage: ""
 };
 
 export const UPDATE_NAME = "UPDATE_NAME";
