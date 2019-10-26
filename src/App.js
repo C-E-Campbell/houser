@@ -3,7 +3,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Header from "./components/Header/Header";
-
+import Footer from "./components/Footer/Footer";
 import Wizard from "./components/Wizard/Wizard";
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
 				<Route exact path={"/"} component={Dashboard} />
 				<Route path={"/wizard"} component={Wizard} />
 			</Switch>
+
+			<Footer />
 		</div>
 	);
 }

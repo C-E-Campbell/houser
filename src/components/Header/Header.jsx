@@ -18,6 +18,9 @@ export default class Header extends Component {
 						<Link className='register-btn' to='/houser/signup'>
 							Sign Up
 						</Link>
+						<Link className='register-btn' to='/houser/logout'>
+							Logout
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -5,8 +5,8 @@
 .App {
 	color: #333;
 	background-color: #afd4c0;
-	height: 100vh;
-	background: linear-gradient(#3d413f5d, #161d1949),
+	height: 100%;
+	background: linear-gradient(#05050598, #212e2760),
 		url(./assets/dawn-desktop-wallpaper-evening-1612351.jpg);
 	background-size: cover;
 }
