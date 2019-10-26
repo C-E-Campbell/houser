@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./StepTwo.scss";
 import store, { UPDATE_IMG } from "../../reduxStuff/store";
 
 export default class Wizard extends Component {
@@ -34,18 +35,21 @@ export default class Wizard extends Component {
 
 	render() {
 		return (
-			<section>
-				<label htmlFor='zip'>Image URL</label>
-				<input
-					value={this.state.img}
-					type='text'
-					onChange={this.handleOnChange}
-					id='img'
-				/>
-				<Link onClick={this.updateImg} to='/wizard/step1'>
+			<section className='section-step2'>
+				<h2>Add New Listing</h2>
+				<div className='step2-list'>
+					<label htmlFor='zip'>Image URL</label>
+					<input
+						value={this.state.img}
+						type='text'
+						onChange={this.handleOnChange}
+						id='img'
+					/>
+				</div>
+				<Link className='prev-link' onClick={this.updateImg} to='/wizard/step1'>
 					Previous
 				</Link>
-				<Link onClick={this.updateImg} to='/wizard/step3'>
+				<Link className='next-link' onClick={this.updateImg} to='/wizard/step3'>
 					Next
 				</Link>
 			</section>

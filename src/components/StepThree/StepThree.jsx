@@ -6,6 +6,7 @@ import store, {
 	CLEAR_REDUX
 } from "../../reduxStuff/store";
 import axios from "axios";
+import "./StepThree.scss";
 export default class Wizard extends Component {
 	constructor(props) {
 		const reduxStore = store.getState();
@@ -63,22 +64,29 @@ export default class Wizard extends Component {
 
 	render() {
 		return (
-			<section>
-				<label htmlFor='mortgage'>Mortgage</label>
-				<input
-					value={this.state.mortgage}
-					type='number'
-					onChange={this.handleOnChange}
-					id='mortgage'
-				/>
-				<label htmlFor='rent'>Rent</label>
-				<input
-					value={this.state.rent}
-					type='number'
-					onChange={this.handleOnChange}
-					id='rent'
-				/>
-				<Link onClick={this.updateRent} to='/wizard/step2'>
+			<section className='section-step3'>
+				<h2>Add New Listing</h2>
+				<div className='step3-list'>
+					<label htmlFor='mortgage'>Mortgage</label>
+					<input
+						value={this.state.mortgage}
+						type='number'
+						onChange={this.handleOnChange}
+						id='mortgage'
+					/>
+					<label htmlFor='rent'>Rent</label>
+					<input
+						value={this.state.rent}
+						type='number'
+						onChange={this.handleOnChange}
+						id='rent'
+					/>
+				</div>
+				<Link
+					className='prev-link'
+					onClick={this.updateRent}
+					to='/wizard/step2'
+				>
 					Previous
 				</Link>
 

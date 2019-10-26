@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import store, { CLEAR_REDUX } from "../../reduxStuff/store";
+import "./Wizard.scss";
 import StepOne from "../StepOne/StepOne";
 import StepTwo from "../StepTwo/StepTwo";
 import StepThree from "../StepThree/StepThree";
@@ -16,9 +17,12 @@ export default class Wizard extends Component {
 	render() {
 		return (
 			<section>
-				<Link onClick={this.clearForm} to='/'>
-					Cancel
-				</Link>
+				<div className='cancel-div'>
+					<Link className='cancel-btn' onClick={this.clearForm} to='/'>
+						Cancel
+					</Link>
+				</div>
+
 				<Route path={"/wizard/step1"} component={StepOne} />
 				<Route path={"/wizard/step2"} component={StepTwo} />
 				<Route path={"/wizard/step3"} component={StepThree} />
