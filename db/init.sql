@@ -13,3 +13,12 @@ CREATE TABLE houses (
 INSERT INTO houses(name, address, city, state, zip, img, mortgage, rent)
 VALUES
 ('new house', '123 redux ave', 'jax', 'FL', 32221, https://i.pinimg.com/originals/ff/0a/fc/ff0afc3d1f4db233f4ddac1e9d079f5b.jpg, 33.3, 2);
+
+
+CREATE TABLE users
+(
+id SERIAL PRIMARY KEY,
+email VARCHAR(200),
+user_password TEXT
+)
+
