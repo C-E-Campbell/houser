@@ -11,12 +11,12 @@ export default class Landing extends Component {
 		this.state = {
 			email: "",
 			password: "",
-			store: reduxStore
+			store: reduxStore,
+			showLog: true
 		};
 	}
 
 	componentDidMount() {
-		// 	alert(`To Login     email: user   &   password: user`);
 		const reduxState = store.getState();
 		store.subscribe(() => {
 			this.setState({ store: reduxState });
@@ -63,6 +63,26 @@ export default class Landing extends Component {
 	render() {
 		return (
 			<div>
+				{this.state.showLog ? (
+					<div className='log'>
+						<i
+							onClick={() => {
+								this.setState({ showLog: false });
+							}}
+							class='fas fa-times'
+						></i>
+						<p>You can login as a USER or ADMIN </p>
+						<p>ONLY ADMINS CAN DELETE HOMES! </p>
+						<p>
+							<span className='red'>ADMIN--</span> email: admin | password:
+							admin
+						</p>
+						<p>
+							<span className='red'>USER--</span> email: user | password: user
+						</p>
+						<p>or register a new account: will be user status</p>
+					</div>
+				) : null}
 				<div className='header'>
 					<div className='logo'>
 						<div className='btn-div'>
