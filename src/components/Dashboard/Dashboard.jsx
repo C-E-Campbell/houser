@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.scss";
-import store, { LOGOUT_USER } from "../../reduxStuff/store";
+import store from "../../reduxStuff/store";
 import axios from "axios";
 import House from "../House/House";
 import LogoutHeader from "../LogoutHeader/LogoutHeader";

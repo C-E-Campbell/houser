@@ -1,15 +1,26 @@
 import React, { Component } from "react";
 import "./LogoutHeader.scss";
-import store from "../../reduxStuff/store";
+import store, { LOGOUT_USER } from "../../reduxStuff/store";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 export default class Header extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		const reduxStore = store.getState();
 		this.state = {
 			store: reduxStore
 		};
 	}
+
+	logout = async () => {
+		await axios.get("/houser/logout").then(response => {
+			store.dispatch({
+				type: LOGOUT_USER,
+				payload: response.data
+			});
+		});
+	};
 
 	componentDidMount() {
 		store.subscribe(() => {
@@ -28,7 +39,7 @@ export default class Header extends Component {
 					<div className='login-container'>
 						<h2>{`Welcome, ${this.state.store.user.email}`}</h2>
 						<div className='btn-div'>
-							<Link className='register-btn' to='/'>
+							<Link to='/' onClick={this.logout} className='register-btn'>
 								Logout
 							</Link>
 						</div>
