@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.scss";
-import store from "../../reduxStuff/store";
+import store, { LOGOUT_USER } from "../../reduxStuff/store";
 import axios from "axios";
 import House from "../House/House";
 import LogoutHeader from "../LogoutHeader/LogoutHeader";
 export default class Dashboard extends Component {
 	constructor(props) {
 		super(props);
+		const reduxStore = store.getState();
 		this.state = {
 			houses: [],
-			store: {}
+			store: reduxStore
 		};
 	}
 
@@ -21,11 +22,6 @@ export default class Dashboard extends Component {
 			this.setState({ store: reduxState });
 		});
 	}
-	logout = () => {
-		axios.get("/houser/logout").then(response => {
-			this.setState({ user: response.data });
-		});
-	};
 
 	getHouses = () => {
 		axios.get("/houser/houses").then(response => {

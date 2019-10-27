@@ -23,6 +23,8 @@ export const UPDATE_MORTGAGE = "UPDATE_MORTGAGE";
 export const UPDATE_REDUX = "UPDATE_REDUX";
 export const CLEAR_REDUX = "CLEAR_REDUX";
 export const UPDATE_USER = "UPDATE_USER";
+export const REGISTER_USER = "REGISTER_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
@@ -44,6 +46,10 @@ const reducer = (state = initialState, action) => {
 		case UPDATE_MORTGAGE:
 			return { ...state, mortgage: payload };
 		case UPDATE_USER:
+			return { ...state, user: payload };
+		case REGISTER_USER:
+			return { ...state, user: payload };
+		case LOGOUT_USER:
 			return { ...state, user: payload };
 		case CLEAR_REDUX:
 			return {

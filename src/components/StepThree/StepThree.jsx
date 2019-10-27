@@ -48,7 +48,7 @@ export default class Wizard extends Component {
 		store.dispatch({
 			type: CLEAR_REDUX
 		});
-		this.props.history.push("/");
+		this.props.history.push("/dashboard");
 	};
 
 	updateRent = () => {
