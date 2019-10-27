@@ -8,7 +8,8 @@ const initialState = {
 	city: "",
 	img: "",
 	rent: "",
-	mortgage: ""
+	mortgage: "",
+	user: ""
 };
 
 export const UPDATE_NAME = "UPDATE_NAME";
@@ -21,6 +22,7 @@ export const UPDATE_RENT = "UPDATE_RENT";
 export const UPDATE_MORTGAGE = "UPDATE_MORTGAGE";
 export const UPDATE_REDUX = "UPDATE_REDUX";
 export const CLEAR_REDUX = "CLEAR_REDUX";
+export const UPDATE_USER = "UPDATE_USER";
 
 const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
@@ -41,6 +43,8 @@ const reducer = (state = initialState, action) => {
 			return { ...state, rent: payload };
 		case UPDATE_MORTGAGE:
 			return { ...state, mortgage: payload };
+		case UPDATE_USER:
+			return { ...state, user: payload };
 		case CLEAR_REDUX:
 			return {
 				...state,

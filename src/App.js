@@ -1,18 +1,17 @@
 import React from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
+import Landing from "./Landing/Landing";
 import Dashboard from "./components/Dashboard/Dashboard";
-import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Wizard from "./components/Wizard/Wizard";
 
 function App() {
 	return (
 		<div className='App'>
-			<Header />
-
 			<Switch>
-				<Route exact path={"/"} component={Dashboard} />
+				<Route exact path={"/"} component={Landing} />
+				<Route path={"/dashboard"} component={Dashboard} />
 				<Route path={"/wizard"} component={Wizard} />
 			</Switch>
 

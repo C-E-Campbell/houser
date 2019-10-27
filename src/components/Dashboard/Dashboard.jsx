@@ -1,19 +1,31 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Dashboard.scss";
+import store from "../../reduxStuff/store";
 import axios from "axios";
 import House from "../House/House";
-
+import LogoutHeader from "../LogoutHeader/LogoutHeader";
 export default class Dashboard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			houses: []
+			houses: [],
+			store: {}
 		};
 	}
+
 	componentDidMount() {
 		this.getHouses();
+		store.subscribe(() => {
+			const reduxState = store.getState();
+			this.setState({ store: reduxState });
+		});
 	}
+	logout = () => {
+		axios.get("/houser/logout").then(response => {
+			this.setState({ user: response.data });
+		});
+	};
 
 	getHouses = () => {
 		axios.get("/houser/houses").then(response => {
@@ -34,16 +46,19 @@ export default class Dashboard extends Component {
 		});
 
 		return (
-			<div className='main'>
-				<div className='dashboard'>
-					<h1>Dashboard</h1>
-					<Link to='/wizard/step1'>Add New Property</Link>
+			<div>
+				<LogoutHeader />
+				<div className='main'>
+					<div className='dashboard'>
+						<h1>Dashboard</h1>
+						<Link to='/wizard/step1'>Add New Property</Link>
+					</div>
+					<hr />
+					<section className='main-section'>
+						<h2>Home Listings</h2>
+						{mappedHouses}
+					</section>
 				</div>
-				<hr />
-				<section className='main-section'>
-					<h2>Home Listings</h2>
-					{mappedHouses}
-				</section>
 			</div>
 		);
 	}

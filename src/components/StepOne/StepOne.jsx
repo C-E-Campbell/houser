@@ -8,6 +8,7 @@ import store, {
 	UPDATE_STATE,
 	UPDATE_ZIP
 } from "../../reduxStuff/store";
+
 export default class Wizard extends Component {
 	constructor(props) {
 		super(props);
@@ -20,6 +21,7 @@ export default class Wizard extends Component {
 			zip: reduxState.zip
 		};
 	}
+
 	componentDidMount() {
 		store.subscribe(() => {
 			const reduxState = store.getState();
@@ -32,6 +34,7 @@ export default class Wizard extends Component {
 			});
 		});
 	}
+
 	handleOnChange = event => {
 		let { id, value } = event.target;
 		this.setState({ [id]: value });
