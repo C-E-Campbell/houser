@@ -19,6 +19,12 @@ CREATE TABLE users
 (
 id SERIAL PRIMARY KEY,
 email VARCHAR(200),
-user_password TEXT
+user_password TEXT,
+isAdmin BOOLEAN NOT NULL
 )
+
+INSERT INTO users(email, user_password, isAdmin)
+VALUES
+('admin', 'admin', TRUE);
+('user', 'user', FALSE);
 

@@ -30,9 +30,13 @@ export default class Dashboard extends Component {
 	};
 
 	deleteHouse = id => {
-		axios.delete(`/houser/houses/${id}`).then(response => {
-			this.setState({ houses: response.data });
-		});
+		if (this.state.store.user.isadmin) {
+			axios.delete(`/houser/houses/${id}`).then(response => {
+				this.setState({ houses: response.data });
+			});
+		} else {
+			alert("You must be an admin to delete a home");
+		}
 	};
 
 	render() {

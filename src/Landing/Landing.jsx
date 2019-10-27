@@ -3,7 +3,7 @@ import "./Landing.scss";
 import video from "./landing.mp4";
 import axios from "axios";
 import store, { REGISTER_USER, UPDATE_USER } from "../reduxStuff/store";
-import { Link } from "react-router-dom";
+
 export default class Landing extends Component {
 	constructor() {
 		super();
@@ -22,6 +22,7 @@ export default class Landing extends Component {
 			this.setState({ store: reduxState });
 		});
 	}
+
 	login = async () => {
 		await axios
 			.post("/houser/login", {
@@ -29,13 +30,20 @@ export default class Landing extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				store.dispatch({
-					type: UPDATE_USER,
-					payload: response.data
-				});
+				console.log(response.data);
+				if (response.data.email) {
+					store.dispatch({
+						type: UPDATE_USER,
+						payload: response.data
+					});
+					this.props.history.push("/dashboard");
+				} else {
+					alert("Register or login with valid account");
+				}
 			});
 		this.setState({ password: "", email: "" });
 	};
+
 	register = async () => {
 		await axios
 			.post("/houser/register", {
@@ -73,13 +81,9 @@ export default class Landing extends Component {
 								placeholder='password'
 							/>
 							<div className='btn-div'>
-								<Link
-									to='/dashboard'
-									onClick={this.login}
-									className='register-btn'
-								>
+								<button onClick={this.login} className='register-btn'>
 									Login
-								</Link>
+								</button>
 							</div>
 						</div>
 					</div>

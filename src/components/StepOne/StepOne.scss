@@ -1,7 +1,7 @@
 .section-step1 {
 	background-color: #e5f4eca4;
 	width: 80%;
-	height: 60%;
+
 	max-width: 960px;
 	margin: 1.5rem auto;
 	padding: 1rem;
@@ -28,6 +28,7 @@
 		border-radius: 4px;
 		font-weight: 700;
 		transition: all 0.4s ease;
+		margin-top: 1rem;
 		&:hover {
 			background-color: #77d87f;
 			color: #333;

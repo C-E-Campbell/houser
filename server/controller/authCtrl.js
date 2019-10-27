@@ -15,7 +15,8 @@ module.exports = {
 			const user = registeredUser[0];
 			req.session.user = {
 				email: user.email,
-				id: user.id
+				id: user.id,
+				isadmin: userFound[0].isadmin
 			};
 
 			return res.status(201).send(req.session.user);
@@ -25,12 +26,17 @@ module.exports = {
 		let { email, password } = req.body;
 		let db = req.app.get("db");
 		let userFound = await db.check_if_user_exists(email);
+		console.log(userFound);
 		if (!userFound[0]) {
 			return res.status(200).send("Incorrect email. Please try again.");
 		}
 		let result = bcrypt.compareSync(password, userFound[0].user_password);
 		if (result) {
-			req.session.user = { id: userFound[0].id, email: userFound[0].email };
+			req.session.user = {
+				id: userFound[0].id,
+				email: userFound[0].email,
+				isadmin: userFound[0].isadmin
+			};
 			res.status(200).send(req.session.user);
 		} else {
 			return res.status(401).send("Incorrect email/password");
