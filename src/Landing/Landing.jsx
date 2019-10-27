@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./Landing.scss";
 import video from "./landing.mp4";
 import axios from "axios";
-import store, { REGISTER_USER } from "../reduxStuff/store";
-import Header from "../components/Header/Header";
+import store, { REGISTER_USER, UPDATE_USER } from "../reduxStuff/store";
+import { Link } from "react-router-dom";
 export default class Landing extends Component {
 	constructor() {
 		super();
@@ -22,7 +22,20 @@ export default class Landing extends Component {
 			this.setState({ store: reduxState });
 		});
 	}
-
+	login = async () => {
+		await axios
+			.post("/houser/login", {
+				email: this.state.email,
+				password: this.state.password
+			})
+			.then(response => {
+				store.dispatch({
+					type: UPDATE_USER,
+					payload: response.data
+				});
+			});
+		this.setState({ password: "", email: "" });
+	};
 	register = async () => {
 		await axios
 			.post("/houser/register", {
@@ -42,7 +55,35 @@ export default class Landing extends Component {
 	render() {
 		return (
 			<div>
-				<Header />
+				<div className='header'>
+					<div className='logo'>
+						<div className='btn-div'>
+							<i className='fas fa-home'></i>
+							<h1>Houser</h1>
+						</div>
+						<div className='login-container'>
+							<input
+								onChange={e => this.setState({ email: e.target.value })}
+								type='text'
+								placeholder='email'
+							/>
+							<input
+								onChange={e => this.setState({ password: e.target.value })}
+								type='password'
+								placeholder='password'
+							/>
+							<div className='btn-div'>
+								<Link
+									to='/dashboard'
+									onClick={this.login}
+									className='register-btn'
+								>
+									Login
+								</Link>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div className='landing'>
 					<section className='cta-section'>
 						<div className='cta-container'>
