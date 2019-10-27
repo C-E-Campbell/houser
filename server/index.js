@@ -37,10 +37,8 @@ app.post("/houser/register", authCtrl.register);
 
 app.post("/houser/login", authCtrl.login);
 
-app.get("/houser/logout", (req, res) => {
-	req.session.destroy();
-	res.sendStatus(200);
-});
+app.get("/houser/logout", authCtrl.logout);
+
 //-------------- Run It!
 app.listen(process.env.PORT, () => {
 	console.log(`server running on ${process.env.PORT}`);
