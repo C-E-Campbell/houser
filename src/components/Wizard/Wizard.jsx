@@ -21,7 +21,11 @@ export default class Wizard extends Component {
 				<LogoutHeader />
 				<section>
 					<div className='cancel-div'>
-						<Link className='cancel-btn' onClick={this.clearForm} to='/'>
+						<Link
+							className='cancel-btn'
+							onClick={this.clearForm}
+							to='/dashboard'
+						>
 							Cancel
 						</Link>
 					</div>

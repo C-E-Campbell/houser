@@ -64,34 +64,36 @@ export default class Wizard extends Component {
 
 	render() {
 		return (
-			<section className='section-step3'>
-				<h2>Add New Listing</h2>
-				<div className='step3-list'>
-					<label htmlFor='mortgage'>Mortgage</label>
-					<input
-						value={this.state.mortgage}
-						type='number'
-						onChange={this.handleOnChange}
-						id='mortgage'
-					/>
-					<label htmlFor='rent'>Rent</label>
-					<input
-						value={this.state.rent}
-						type='number'
-						onChange={this.handleOnChange}
-						id='rent'
-					/>
-				</div>
-				<Link
-					className='prev-link'
-					onClick={this.updateRent}
-					to='/wizard/step2'
-				>
-					Previous
-				</Link>
+			<div className='step-container'>
+				<section className='section-step3'>
+					<h2>Add New Listing</h2>
+					<div className='step3-list'>
+						<label htmlFor='mortgage'>Mortgage</label>
+						<input
+							value={this.state.mortgage}
+							type='number'
+							onChange={this.handleOnChange}
+							id='mortgage'
+						/>
+						<label htmlFor='rent'>Rent</label>
+						<input
+							value={this.state.rent}
+							type='number'
+							onChange={this.handleOnChange}
+							id='rent'
+						/>
+					</div>
+					<Link
+						className='prev-link'
+						onClick={this.updateRent}
+						to='/wizard/step2'
+					>
+						Previous
+					</Link>
 
-				<button onClick={this.handleSubmitNewHouse}>Complete</button>
-			</section>
+					<button onClick={this.handleSubmitNewHouse}>Complete</button>
+				</section>
+			</div>
 		);
 	}
 }

@@ -65,56 +65,58 @@ export default class Wizard extends Component {
 
 	render() {
 		return (
-			<section className='section-step1'>
-				<h2>Add New Listing</h2>
-				<div className='step1-list'>
-					<label htmlFor='name'>Property Name</label>
-					<input
-						value={this.state.name}
-						type='text'
-						onChange={this.handleOnChange}
-						id='name'
-					/>
-					<label htmlFor='address'>Address</label>
-					<input
-						value={this.state.address}
-						type='text'
-						onChange={this.handleOnChange}
-						id='address'
-					/>
-					<label value={this.state.name} htmlFor='city'>
-						City
-					</label>
-					<input
-						value={this.state.city}
-						type='text'
-						onChange={this.handleOnChange}
-						id='city'
-					/>
-					<label htmlFor='state'>State (abbr only)</label>
-					<input
-						value={this.state.state}
-						type='text'
-						onChange={this.handleOnChange}
-						id='state'
-					/>
-					<label htmlFor='zip'>Zipcode</label>
-					<input
-						value={this.state.zip}
-						type='number'
-						onChange={this.handleOnChange}
-						id='zip'
-					/>
-				</div>
+			<div className='step-container'>
+				<section className='section-step1'>
+					<h2>Add New Listing</h2>
+					<div className='step1-list'>
+						<label htmlFor='name'>Property Name</label>
+						<input
+							value={this.state.name}
+							type='text'
+							onChange={this.handleOnChange}
+							id='name'
+						/>
+						<label htmlFor='address'>Address</label>
+						<input
+							value={this.state.address}
+							type='text'
+							onChange={this.handleOnChange}
+							id='address'
+						/>
+						<label value={this.state.name} htmlFor='city'>
+							City
+						</label>
+						<input
+							value={this.state.city}
+							type='text'
+							onChange={this.handleOnChange}
+							id='city'
+						/>
+						<label htmlFor='state'>State (abbr only)</label>
+						<input
+							value={this.state.state}
+							type='text'
+							onChange={this.handleOnChange}
+							id='state'
+						/>
+						<label htmlFor='zip'>Zipcode</label>
+						<input
+							value={this.state.zip}
+							type='number'
+							onChange={this.handleOnChange}
+							id='zip'
+						/>
+					</div>
 
-				<Link
-					className='next-link'
-					onClick={this.updateLocation}
-					to='/wizard/step2'
-				>
-					Next
-				</Link>
-			</section>
+					<Link
+						className='next-link'
+						onClick={this.updateLocation}
+						to='/wizard/step2'
+					>
+						Next
+					</Link>
+				</section>
+			</div>
 		);
 	}
 }
