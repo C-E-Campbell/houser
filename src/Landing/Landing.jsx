@@ -81,7 +81,7 @@ export default class Landing extends Component {
 						<p>
 							<span className='red'>USER--</span> email: user | password: user
 						</p>
-						<p>or register a new account: will be user status</p>
+						<p>or register a new account: will be of user status</p>
 					</div>
 				) : null}
 				<div className='header'>
