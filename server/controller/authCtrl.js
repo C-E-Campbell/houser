@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 module.exports = {
 	register: async (req, res) => {
 		const { email, password } = req.body;
+		const isadmin = false;
 		const db = req.app.get("db");
 		const result = await db.check_if_user_exists([email]);
 		const exitingUser = result[0];
@@ -11,12 +12,12 @@ module.exports = {
 				.send("This user already exists. Sign in with your account.");
 		} else {
 			var hash = bcrypt.hashSync(password, 10);
-			const registeredUser = await db.create_user(email, hash);
+			const registeredUser = await db.create_user(email, hash, isadmin);
 			const user = registeredUser[0];
 			req.session.user = {
-				email: user.email,
 				id: user.id,
-				isadmin: userFound[0].isadmin
+				email: user.email,
+				isadmin: user.isadmin
 			};
 
 			return res.status(201).send(req.session.user);

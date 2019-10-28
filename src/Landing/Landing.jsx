@@ -51,6 +51,7 @@ export default class Landing extends Component {
 				password: this.state.password
 			})
 			.then(response => {
+				console.log(response.data);
 				store.dispatch({
 					type: REGISTER_USER,
 					payload: response.data
@@ -69,7 +70,7 @@ export default class Landing extends Component {
 							onClick={() => {
 								this.setState({ showLog: false });
 							}}
-							class='fas fa-times'
+							className='fas fa-times'
 						></i>
 						<p>You can login as a USER or ADMIN </p>
 						<p>ONLY ADMINS CAN DELETE HOMES! </p>
