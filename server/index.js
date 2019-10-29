@@ -24,6 +24,7 @@ app.use(
 );
 
 //--------------- End Points
+app.use(express.static(`${__dirname}/../build`));
 
 app.get("/api/test", testCtrl.test);
 
@@ -38,6 +39,11 @@ app.post("/houser/register", authCtrl.register);
 app.post("/houser/login", authCtrl.login);
 
 app.get("/houser/logout", authCtrl.logout);
+
+const path = require("path");
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 //-------------- Run It!
 app.listen(process.env.PORT, () => {
