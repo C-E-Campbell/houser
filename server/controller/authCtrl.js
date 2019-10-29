@@ -27,7 +27,7 @@ module.exports = {
 		let { email, password } = req.body;
 		let db = req.app.get("db");
 		let userFound = await db.check_if_user_exists(email);
-		console.log(userFound);
+
 		if (!userFound[0]) {
 			return res.status(200).send("Incorrect email. Please try again.");
 		}

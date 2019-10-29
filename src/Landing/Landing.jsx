@@ -30,7 +30,6 @@ export default class Landing extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response.data);
 				if (response.data.email) {
 					store.dispatch({
 						type: UPDATE_USER,
@@ -51,7 +50,6 @@ export default class Landing extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response.data);
 				store.dispatch({
 					type: REGISTER_USER,
 					payload: response.data
